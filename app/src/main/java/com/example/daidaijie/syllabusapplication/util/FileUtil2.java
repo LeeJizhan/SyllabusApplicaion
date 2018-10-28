@@ -34,7 +34,7 @@ public class FileUtil2 {
     }
 
     public static String getRootPath(boolean slash){
-        String path = Environment.getExternalStorageDirectory().toString();
+        String path = Environment.getExternalStorageDirectory().getPath();
         if (slash)
             return path + "/";
         return path;

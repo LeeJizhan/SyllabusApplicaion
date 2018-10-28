@@ -112,13 +112,19 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.view,
     @Override
     public void showInfo(final UpdateInfoBean updateInfoBean) {
         int newVersionCode = Integer.parseInt(updateInfoBean.getVersionCode());
+        // 更新按钮
         if (newVersionCode > App.versionCode) {
             mUpdateButton.setVisibility(View.VISIBLE);
             mUpdateButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UpdateAsync updateAsync = new UpdateAsync(UpdateActivity.this, UpdateActivity.this, updateInfoBean.getDownload_address(), updateInfoBean.getApk_file_name());
-                    updateAsync.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                    Intent intent= new Intent();
+                    intent.setAction("android.intent.action.VIEW");
+                    Uri content_url = Uri.parse("https://fir.im/syllabus");
+                    intent.setData(content_url);
+                    startActivity(intent);
+//                    UpdateAsync updateAsync = new UpdateAsync(UpdateActivity.this, UpdateActivity.this, updateInfoBean.getDownload_address(), updateInfoBean.getApk_file_name());
+//                    updateAsync.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 }
             });
         }
@@ -173,16 +179,16 @@ public class UpdateActivity extends BaseActivity implements UpdateContract.view,
             showInfoMessage("文件下载成功");
             // 隐式的 intent
             Intent install_apk = new Intent(Intent.ACTION_VIEW);
+            install_apk.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //如果android版本大于7.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 //即是在清单文件中配置的authorities
-                uri = FileProvider.getUriForFile(getApplicationContext(), "com.example.daidaijie.syllabusapplication.fileprovider", apk);
+                uri = FileProvider.getUriForFile(this, "com.example.daidaijie.syllabusapplication.fileprovider", apk);
                 // 给目标应用一个临时授权
                 install_apk.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {
                 uri = Uri.fromFile(apk);
             }
-            LoggerUtil.e(uri + "");
             // 安装apk文件
             install_apk.setDataAndType(uri, "application/vnd.android.package-archive");
             startActivity(install_apk);

@@ -110,6 +110,7 @@ public class AddLessonActivity extends BaseActivity {
         }
     }
 
+    //添加课程
     private void addLesson() {
 
         if (mLessonNameEditText.getText().toString().trim().isEmpty()) {

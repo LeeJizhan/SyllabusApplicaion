@@ -260,6 +260,7 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     public void installUpdate(File apk) {
+        LoggerUtil.e(apk + "");
         progressDialog.dismiss();
         Uri uri;
         if (apk != null && apk.exists()) {
@@ -271,7 +272,7 @@ public class MainActivity extends BaseActivity implements
             //如果android版本大于7.0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 //即是在清单文件中配置的authorities
-                uri = FileProvider.getUriForFile(getApplicationContext(), "com.example.daidaijie.syllabusapplication.fileprovider", apk);
+                uri = FileProvider.getUriForFile(this, "com.example.daidaijie.syllabusapplication.fileprovider", apk);
                 // 给目标应用一个临时授权
                 install_apk.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             } else {
@@ -463,7 +464,12 @@ public class MainActivity extends BaseActivity implements
                 .setNegativeButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        onUpdateClickCallBack.onUpdate();
+                        Intent intent= new Intent();
+                        intent.setAction("android.intent.action.VIEW");
+                        Uri content_url = Uri.parse("https://fir.im/syllabus");
+                        intent.setData(content_url);
+                        startActivity(intent);
+                        //onUpdateClickCallBack.onUpdate();
                     }
                 }).create();
         updateDialog.show();

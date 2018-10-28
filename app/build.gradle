@@ -38,12 +38,22 @@ android {
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'stu_syllabus'
+            keyPassword 'bueryang99'
+            storeFile file('./stu_syllabus.jks')
+            storePassword 'bueryang99'
+            v2SigningEnabled false
+        }
+    }
+
     defaultConfig {
         applicationId "com.hjsmallfly.syllabus"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 51
-        versionName "2.1.1"
+        versionName "2.1.1.0"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
@@ -150,7 +160,7 @@ dependencies {
     compile 'cn.bmob.android:bmob-sdk:3.5.0'
 
     compile 'io.reactivex:rxandroid:1.2.1'
-    //compile 'io.reactivex:rxjava:1.1.7'
+    compile 'io.reactivex:rxjava:1.1.7'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.zzhoujay.materialcolors:materialcolors:1.0.0'
     compile 'com.facebook.fresco:fresco:0.12.0'
