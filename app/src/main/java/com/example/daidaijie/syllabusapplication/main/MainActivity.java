@@ -4,12 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -19,19 +17,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
-import com.example.daidaijie.syllabusapplication.App;
 import com.example.daidaijie.syllabusapplication.Constants;
 import com.example.daidaijie.syllabusapplication.R;
 import com.example.daidaijie.syllabusapplication.activity.EmailWebActivity;
@@ -49,6 +44,7 @@ import com.example.daidaijie.syllabusapplication.exam.mainMenu.ExamActivity;
 import com.example.daidaijie.syllabusapplication.grade.GradeActivity;
 import com.example.daidaijie.syllabusapplication.login.login.LoginActivity;
 import com.example.daidaijie.syllabusapplication.model.InternetModel;
+import com.example.daidaijie.syllabusapplication.mystu.MyStuMainActivity;
 import com.example.daidaijie.syllabusapplication.other.update.IDownloadView;
 import com.example.daidaijie.syllabusapplication.other.update.UpdateInstaller;
 import com.example.daidaijie.syllabusapplication.retrofitApi.SchoolInternetApi;
@@ -65,9 +61,7 @@ import com.example.daidaijie.syllabusapplication.other.PhotoDetailActivity;
 import com.example.daidaijie.syllabusapplication.other.update.UpdateActivity;
 import com.example.daidaijie.syllabusapplication.schoolDymatic.STUCircleActivity;
 import com.example.daidaijie.syllabusapplication.schoolDymatic.personal.PersonalActivity;
-import com.example.daidaijie.syllabusapplication.stuLibrary.mainMenu.LibraryActivity;
 import com.example.daidaijie.syllabusapplication.syllabus.main.activity.SyllabusActivity;
-import com.example.daidaijie.syllabusapplication.takeout.mainMenu.TakeOutActivity;
 import com.example.daidaijie.syllabusapplication.user.UserComponent;
 import com.example.daidaijie.syllabusapplication.util.ClipboardUtil;
 import com.example.daidaijie.syllabusapplication.util.DensityUtil;
@@ -82,9 +76,6 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
-import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
-import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.sdk.modelmsg.WXWebpageObject;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -139,8 +130,8 @@ public class MainActivity extends BaseActivity implements
     ItemCardLayout mToWifiItemLayout;
     @BindView(R.id.toLibraryCardItem)
     ItemCardLayout mToLibraryCardItem;
-    @BindView(R.id.toTakeOutCardItem)
-    ItemCardLayout mToTakeOutCardItem;
+    @BindView(R.id.toMyStuCardItem)
+    ItemCardLayout mToMyStuCardItem;
 
     RelativeLayout navHeadRelativeLayout;
     SimpleDraweeView headImageDraweeView;
@@ -528,10 +519,11 @@ public class MainActivity extends BaseActivity implements
             }
         });
 
-        mToTakeOutCardItem.setOnClickListener(new View.OnClickListener() {
+        mToMyStuCardItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, TakeOutActivity.class);
+                //Intent intent = new Intent(MainActivity.this, TakeOutActivity.class);
+                Intent intent = new Intent(MainActivity.this, MyStuMainActivity.class);
                 startActivity(intent);
             }
         });
