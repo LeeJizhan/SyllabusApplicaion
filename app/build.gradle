@@ -52,8 +52,8 @@ android {
         applicationId "com.hjsmallfly.syllabus"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 51
-        versionName "2.1.1.0"
+        versionCode 52
+        versionName "2.1.1.1"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
@@ -177,6 +177,7 @@ dependencies {
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'com.orhanobut:logger:1.15'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.github.ybq:Endless-RecyclerView:1.0.3'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
