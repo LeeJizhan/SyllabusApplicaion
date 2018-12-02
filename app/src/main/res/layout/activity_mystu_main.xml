@@ -7,10 +7,12 @@
     tools:context="com.example.daidaijie.syllabusapplication.mystu.MyStuMainActivity">
 
     <TextView
+        android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal|center_vertical"
         android:text="Welcome to MyStu!"
+        android:textColor="?attr/colorPrimary"
         android:textSize="28sp" />
 
 </android.support.constraint.ConstraintLayout>

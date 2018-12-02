@@ -41,7 +41,7 @@
             android:singleLine="true"
             android:textColor="?attr/colorPrimary"
             android:textSize="14sp"
-            tools:text="余强"/>
+            tools:text="Tony"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                 android:singleLine="true"
                 android:textColor="@color/defaultShowColor"
                 android:textSize="10sp"
-                tools:text="来自iOS"/>
+                tools:text="from iOS"/>
         </RelativeLayout>
 
         <TextView
