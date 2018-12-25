@@ -153,6 +153,8 @@ public class MainActivity extends BaseActivity implements
     private ProgressDialog progressDialog;
     private UpdateAsync updateAsync;
 
+    private static final String firUrl = "https://fir.im/stusyllabus";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -455,9 +457,9 @@ public class MainActivity extends BaseActivity implements
                 .setNegativeButton("更新", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent= new Intent();
+                        Intent intent = new Intent();
                         intent.setAction("android.intent.action.VIEW");
-                        Uri content_url = Uri.parse("https://fir.im/syllabus");
+                        Uri content_url = Uri.parse(firUrl);
                         intent.setData(content_url);
                         startActivity(intent);
                         //onUpdateClickCallBack.onUpdate();
@@ -537,7 +539,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void share(int scene) {
-        ShareWXUtil.shareUrl("http://fir.im/stusyllabus", "汕大课程表", "汕大课程表下载地址",
+        ShareWXUtil.shareUrl(firUrl, "汕大课程表", "汕大课程表下载地址",
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_syllabus_icon), scene
         );
     }
@@ -556,7 +558,7 @@ public class MainActivity extends BaseActivity implements
         } else if (position == 1) {
             share(1);
         } else {
-            ClipboardUtil.copyToClipboard("http://fir.im/syllabus");
+            ClipboardUtil.copyToClipboard(firUrl);
             showInfoMessage("已复制下载链接到剪贴板");
         }
     }
