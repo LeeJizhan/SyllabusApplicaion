@@ -135,6 +135,7 @@ andResGuard {
 }
 
 dependencies {
+    //libammsdk.jar 微信SDK
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(path: ':galleryfinal')
     compile('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
