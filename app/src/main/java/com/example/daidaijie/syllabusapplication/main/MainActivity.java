@@ -537,7 +537,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void share(int scene) {
-        ShareWXUtil.shareUrl("http://fir.im/syllabus", "汕大课程表", "汕大课程表下载地址",
+        ShareWXUtil.shareUrl("http://fir.im/stusyllabus", "汕大课程表", "汕大课程表下载地址",
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_syllabus_icon), scene
         );
     }
